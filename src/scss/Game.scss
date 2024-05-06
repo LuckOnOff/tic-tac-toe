@@ -1,0 +1,17 @@
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.game-board {
+    margin-bottom: 25px;
+}
+
+@media (max-width: 500px) {
+    .game {
+        flex-direction: column;
+    }
+}
