@@ -26,7 +26,7 @@ const Game = () => {
             />
         </section>
         <section className="game-info">
-          <History history = {history} setCurrentMove = {setCurrentMove}/>
+          <History currentMove = {currentMove} history = {history} setCurrentMove = {setCurrentMove}/>
         </section>
     </section>
   )

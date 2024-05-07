@@ -16,3 +16,7 @@
   background: green;
   color: white;
 }
+.list-item__text {
+  font-weight: 600;
+  border-bottom: 1px solid black;
+}
