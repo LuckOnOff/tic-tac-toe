@@ -20,7 +20,7 @@ const Board = ({ xIsNext, squares, onPlay }) => {
             const [a, b, c] = lines[i];
 
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-              return squares[a]; // возвращает X или O
+                return squares[a]; // возвращает X или O
             } // ищет выигрышные комбинации в игровом поле
         }
 
@@ -58,51 +58,23 @@ const Board = ({ xIsNext, squares, onPlay }) => {
         status = "Следующий ход: " + (xIsNext ? "X" : "O");
     }
 
-  return ( // сетка из 3 линий по 3 квадрата каждая
+  return ( // отрисовка матрицы 3х3 через 2 цикла
     <>
         <h1 className="board-status">{status}</h1>
-        <section className="board-row">
-            <Square 
-                value = {squares[0]} 
-                onSquareClick = {() => handleClick(0)}
-            />
-            <Square 
-                value = {squares[1]} 
-                onSquareClick = {() => handleClick(1)}
-            />
-            <Square 
-                value = {squares[2]} 
-                onSquareClick = {() => handleClick(2)}
-            />
-        </section>
-        <section className="board-row">
-            <Square 
-                value = {squares[3]} 
-                onSquareClick = {() => handleClick(3)}
-            />
-            <Square 
-                value = {squares[4]} 
-                onSquareClick = {() => handleClick(4)}
-            />
-            <Square 
-                value = {squares[5]} 
-                onSquareClick = {() => handleClick(5)}
-            />
-        </section>
-        <section className="board-row">
-            <Square 
-                value = {squares[6]} 
-                onSquareClick = {() => handleClick(6)}
-            />
-            <Square 
-                value = {squares[7]} 
-                onSquareClick = {() => handleClick(7)}
-            />
-            <Square 
-                value = {squares[8]} 
-                onSquareClick = {() => handleClick(8)}
-            />
-        </section>
+        {/* формула для преобразования двумерных координат в одномерный индекс в случае матрицы 3x3:
+            индекс = номер строки * количество столбцов + номер столбца */}
+        {[...Array(3).keys()].map(row => (
+            <section key={row} className="board-row">
+                {[...Array(3).keys()].map(col => (
+                    <Square
+                        key={row * 3 + col}
+                        attribute={row * 3 + col}
+                        value={squares[row * 3 + col]}
+                        onSquareClick={() => handleClick(row * 3 + col)}
+                    />
+                ))}
+            </section>
+        ))}
     </>
   )
 
