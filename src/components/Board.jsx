@@ -22,11 +22,11 @@ const Board = ({ xIsNext, squares, onPlay }) => {
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
               return squares[a]; // возвращает X или O
             } // ищет выигрышные комбинации в игровом поле
-
-            if (squares.every(square => square)) {
-                return 'Ничья';
-            } // проверка на ничью
         }
+
+        if (squares.every(square => square)) {
+            return 'Ничья';
+        } // проверка на ничью
 
         return null; // если еще нет победителя или не ничья
     }
